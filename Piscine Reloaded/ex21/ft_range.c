@@ -21,7 +21,11 @@ int	*ft_range(int min, int max)
 	delta = max - min;
 	dest = malloc(sizeof(int) * delta);
 	i = 0;
-	while (min <= max)
+	if (delta <= 0)
+	{
+		return (NULL);
+	}
+	while (min < max)
 	{
 		dest[i] = min;
 		min++;
