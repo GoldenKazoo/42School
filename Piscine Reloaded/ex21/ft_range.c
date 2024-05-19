@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 13:51:26 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/17 15:40:39 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/05/19 12:24:43 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	*ft_range(int min, int max)
 	delta = max - min;
 	dest = malloc(sizeof(int) * delta);
 	i = 0;
-	if (delta <= 0)
+	if (delta <= 0 || (!dest))
 	{
 		return (NULL);
 	}
@@ -29,6 +29,7 @@ int	*ft_range(int min, int max)
 	{
 		dest[i] = min;
 		min++;
+		i++;
 	}
 	return (dest);
 }

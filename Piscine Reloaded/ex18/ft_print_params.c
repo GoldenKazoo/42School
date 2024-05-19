@@ -6,9 +6,11 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 16:33:23 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/17 15:36:16 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/05/19 11:02:10 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+void	ft_putchar(char c);
 
 int	main(int argc, char **argv)
 {

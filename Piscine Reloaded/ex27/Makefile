@@ -1,34 +1,20 @@
-NAME = libft.a
+NAME = ft_display_file
 
-PATH_SRC = ./srcs/
+CFLAGS = -Wall -Wextra -Werror
 
-HEADER = ./includes/libft.h
+SRCS = ft_display_file.c
 
-FLAGS = -Wall -Wextra -Werror
+all: ${NAME}
 
-OPTION = -c -I $(HEADER)
-
-SRC = 	$(PATH_SRC)ft_putchar.c \
-		$(PATH_SRC)ft_putstr.c \
-		$(PATH_SRC)ft_strcmp.c \
-		$(PATH_SRC)ft_strlen.c \
-		$(PATH_SRC)ft_swap.c \
-
-OBJ = ft_putchar.o ft_putstr.o ft_strcmp.o ft_strlen.o ft_swap.o
-
-all: $(NAME)
-
-$(NAME):
-	gcc $(FLAGS) $(OPTION) $(SRC)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+${NAME}:
+		cc ${CFLAGS} ${SRCS} -o ${NAME}
 
 clean:
-	rm -f $(OBJ)
+		-rm -f *.o
 
 fclean: clean
-	rm -f $(NAME)
+		-rm -f ${NAME}
 
-re: fclean all
+re : fclean all
 
 .PHONY: all clean fclean re

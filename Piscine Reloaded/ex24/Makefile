@@ -10,14 +10,17 @@ SRCS = ./srcs/ft_putchar.c\
 
 INCS = ./includes
 
-OBJS = ${SRCS:.c=.o}
+OBJS = ./srcs/ft_putchar.o\
+	./srcs/ft_putstr.o\
+	./srcs/ft_strcmp.o\
+	./srcs/ft_strlen.o\
+	./srcs/ft_swap.o
 
 all: ${NAME}
 
 ${NAME}:	${OBJS}
-		gcc ${CFLAGS} ${INCS} ${SRC}
+		cc ${CFLAGS} -c ${SRCS} -I ${INCS}
 		ar rc ${NAME} ${OBJS}
-		ranlib ${NAME}
 
 clean:
 		-rm -f ${OBJS}

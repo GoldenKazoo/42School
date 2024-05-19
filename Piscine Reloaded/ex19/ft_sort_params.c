@@ -6,9 +6,11 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 09:53:53 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/17 10:29:44 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/05/19 11:02:23 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+void	ft_putchar(char c);
 
 void	swap(char **cible1, char **cible2)
 {
