@@ -20,4 +20,5 @@ int	ft_iterative_factorial(int nb)
 		nb = i * nb;
 		i++;
 	}
+	return (nb);
 }

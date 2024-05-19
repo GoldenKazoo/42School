@@ -17,7 +17,7 @@ void	ft_print_numbers(void)
 	traveler = '0';
 	while (traveler <= '9')
 	{
-		putchar(traveler);
+		ft_putchar(traveler);
 		traveler++;
 	}
 }

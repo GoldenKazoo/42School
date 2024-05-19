@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
 void	ft_print_alphabet(void)
 {
 	char	traveler;
@@ -19,7 +17,7 @@ void	ft_print_alphabet(void)
 	traveler = 'a';
 	while (traveler <= 'z')
 	{
-		write(1, &traveler, 1);
+		ft_putchar(traveler);
 		traveler++;
 	}
 }
