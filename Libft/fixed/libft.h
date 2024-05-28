@@ -4,6 +4,8 @@
 #include <stddef.h>
 #include <stdlib.h>
 
+int	ft_atoi(const char *s);
+void	ft_bzero(void *s, size_t n);
 int	ft_isalpha(int character);
 int	ft_isascii(int character);
 int	ft_isdigit(int character);
@@ -18,8 +20,5 @@ int	ft_isprint(int character);
 size_t	ft_strlen(const char *string);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 
-
-
-//char *ft_strchr(const char *str, int searchedChar);
 
 #endif

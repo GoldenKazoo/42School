@@ -1,47 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 19:15:14 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/28 19:49:28 by zchagar          ###   ########.fr       */
+/*   Created: 2024/05/27 12:55:31 by zchagar           #+#    #+#             */
+/*   Updated: 2024/05/28 18:48:02 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *s)
+void	ft_bzero(void *s, size_t n)
 {
-	int	i;
-	int	k;
-	int	nb;
+	size_t	i;
 
 	i = 0;
-	nb = 0;
-	k = 0;
-	while (s[i] == ' ' || (s[i] >= '\t' && s[i] <= '\r'))
+	while (i < n)
 	{
+		*(char *)&s[i] = 0;
 		i++;
 	}
-	k = i;
-	if (s[i] == '+' || s[i] == '-')
-		i = i + 1;
-	while (s[i] != '\0' && ft_isdigit(s[i]))
-	{
-		nb = nb * 10 + (s[i] - 48);
-		i++;
-	}
-	if (s[k] == '-')
-		return (-1 * nb);
-	return (nb);
 }
 
-//FIXED ?
 /*int	main()
 {
-	printf("%d",ft_atoi("-5"));
-	printf("%c", '\n');
-	printf("%d",atoi("-5"));
+	char salutation[20] = "Bonjouratous";
+	bzero(salutation, 4);
+	printf("%s", salutation);
 }*/

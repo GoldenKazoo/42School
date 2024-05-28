@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:02:28 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/28 16:57:51 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/05/28 18:40:51 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	i = 0;
 	if (size == 0)
 	{
-		return(strlen(src));
+		return (strlen(src));
 	}
 	while (i < size - 1 && i <= strlen(dest) && src[i] != '\0')
 	{
