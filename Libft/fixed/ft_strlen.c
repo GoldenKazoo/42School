@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 13:11:18 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/27 13:16:26 by zchagar          ###   ########.fr       */
+/*   Created: 2024/05/27 12:17:18 by zchagar           #+#    #+#             */
+/*   Updated: 2024/05/28 09:58:00 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	isalpha(int character);
+#include "stdlib.h"
 
-int	ft_tolower (int character)
+size_t	ft_strlen(const char *string)
 {
-	if(ft_isalpha(character) == 1)
+	size_t	i;
+
+	i = 0;
+	while (string[i] != '\0')
 	{
-		if (character >= 97)
-		{
-			return (character - 32);
-		}
+		i++;
 	}
+	return (i);
 }

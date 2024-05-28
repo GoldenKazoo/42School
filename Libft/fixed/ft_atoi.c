@@ -1,32 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 11:01:23 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/28 11:15:47 by zchagar          ###   ########.fr       */
+/*   Created: 2024/05/27 19:15:14 by zchagar           #+#    #+#             */
+/*   Updated: 2024/05/28 10:48:22 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_calloc(size_t elementCount, size_t elementSize)
+int ft_atoi( const char *s)
 {
-	void	*p;
 	int	i;
+	int nb;
 
 	i = 0;
-	p = malloc(elementCount * elementSize);
-	if( !p)
+	nb = 0;
+	if (s[0] == '+' || s[0] == '-' || (s[0] <= '9' && s[0] >= '0'))
 	{
-		return (NULL);
+		if (s[0] == '+' || s[0] == '-')
+		{
+			i = 1;
+		}
+		while (s[i] != '\0')
+		{
+			nb = nb * 10 + (s[i] - 48);
+			i++;
+		}
+		if(s[0] == '-')
+		{
+			return (- 1 * nb);
+		}
+		return(nb);
 	}
-	while (i <= elementCount)
-	{
-		*(unsigned char*)(p+i) = 0;
-		i++;
-	}
+	return(0);
 }
 
+//FIXED ?
+/*int	main()
+{
+	printf("%d",ft_atoi("aaa5"));
+	printf("%c", '\n');
+	printf("%d",atoi("aaa5"));
+}*/

@@ -1,43 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 17:48:30 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/27 18:42:15 by zchagar          ###   ########.fr       */
+/*   Created: 2024/05/27 12:13:31 by zchagar           #+#    #+#             */
+/*   Updated: 2024/05/28 09:56:01 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-char	*ft_strchr(char *str, int searchedChar)
-{
-	int	i;
-	char	*p;
+#include "libft.h"
 
-	i = 0;
-	p = 0;
-	while (str[i] != '\0')
+int	ft_isprint(int character)
+{
+	if (character <= 126 && 32 <= character)
 	{
-		if (str[i] == searchedChar)
-		{
-			p = (char *) &str[i];
-			return (p);
-		}
-		i++;
+		return (1);
 	}
-	if (str[i] == searchedChar)
-		{
-			p = (char *) &str[i];
-			return (p);
-		}
-	return (p);
+	return (0);
 }
-
-int	main()
-{
-	printf("%s", ft_strchr("teste",'e'));
-}
-

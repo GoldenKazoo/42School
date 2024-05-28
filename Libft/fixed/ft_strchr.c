@@ -1,25 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 12:17:18 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/27 12:23:41 by zchagar          ###   ########.fr       */
+/*   Created: 2024/05/27 17:48:30 by zchagar           #+#    #+#             */
+/*   Updated: 2024/05/28 11:35:25 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <stdlib.h>
-
-size_t	ft_strlen(const char *string)
+char	*ft_strchr(char *str, int searchedChar)
 {
-	size_t	i;
+	int	i;
+	char	*p;
 
 	i = 0;
-	while (string[i] != '\0')
+	p = 0;
+	while (str[i] != '\0')
 	{
+		if (str[i] == searchedChar)
+		{
+			p =  &str[i];
+			return (p);
+		}
 		i++;
 	}
-	return (i);
+	if (str[i] == searchedChar)
+		{
+			p = &str[i];
+			return (p);
+		}
+	return (p);
 }
+//FIXED ?
+int	main()
+{
+	printf("%s", ft_strchr("teste",'e'));
+}
+

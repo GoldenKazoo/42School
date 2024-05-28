@@ -6,19 +6,27 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:14:29 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/27 13:16:41 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/05/28 10:50:25 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	isalpha(int character);
+int	ft_isalpha(int character);
 
 int	ft_tolower (int character)
 {
 	if(ft_isalpha(character) == 1)
 	{
-		if (character <= 65)
+		if (character <= 'Z' && character >= 'A')
 		{
 			return (character + 32);
 		}
 	}
+}
+
+int	main()
+{
+	printf("%c", ft_tolower('C'));
+	printf("%c", ft_tolower('\n'));
+	printf("%c", ft_tolower('c'));
+	printf("%c", ft_tolower('\n'));
 }

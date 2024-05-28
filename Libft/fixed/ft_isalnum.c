@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isalpha.c                                          :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 09:02:09 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/27 13:15:55 by zchagar          ###   ########.fr       */
+/*   Created: 2024/05/27 12:08:13 by zchagar           #+#    #+#             */
+/*   Updated: 2024/05/28 09:55:52 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int character)
+#include "libft.h"
+
+int	ft_isalnum(int character)
 {
-	if (character <= 90 && 65 <= character)
+	if (ft_isalpha(character) == 1)
 	{
 		return (1);
 	}
-	if (character <= 122 && 97 <= character)
+	if (ft_isdigit(character) == 1)
 	{
 		return (1);
 	}

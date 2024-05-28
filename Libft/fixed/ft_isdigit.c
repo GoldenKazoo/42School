@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 11:01:23 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/28 11:15:47 by zchagar          ###   ########.fr       */
+/*   Created: 2024/05/27 12:03:56 by zchagar           #+#    #+#             */
+/*   Updated: 2024/05/28 09:56:20 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_calloc(size_t elementCount, size_t elementSize)
+int	ft_isdigit(int character)
 {
-	void	*p;
-	int	i;
-
-	i = 0;
-	p = malloc(elementCount * elementSize);
-	if( !p)
+	if (character <= '9' && '0' <= character)
 	{
-		return (NULL);
+		return (1);
 	}
-	while (i <= elementCount)
-	{
-		*(unsigned char*)(p+i) = 0;
-		i++;
-	}
+	return (0);
 }
-

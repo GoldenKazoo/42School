@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 12:03:56 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/27 12:12:00 by zchagar          ###   ########.fr       */
+/*   Created: 2024/05/27 13:11:18 by zchagar           #+#    #+#             */
+/*   Updated: 2024/05/28 10:37:10 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int character)
+#include "libft.h"
+
+int	ft_tolower (int character)
 {
-	if (character <= 57 && 48 <= character)
+	if(ft_isalpha(character) == 1)
 	{
-		return (1);
+		if (character <= 'z' && character >= 'a')
+		{
+			return (character - 32);
+		}
 	}
-	return (0);
 }

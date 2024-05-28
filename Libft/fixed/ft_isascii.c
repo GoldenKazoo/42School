@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 12:13:31 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/27 12:16:02 by zchagar          ###   ########.fr       */
+/*   Created: 2024/05/27 12:10:42 by zchagar           #+#    #+#             */
+/*   Updated: 2024/05/28 09:55:55 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int character)
+#include "libft.h"
+
+int	ft_isascii(int character)
 {
-	if (character <= 126 && 32 <= character)
+	if (character <= 127 && 0 <= character)
 	{
 		return (1);
 	}

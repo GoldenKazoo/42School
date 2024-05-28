@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 11:01:23 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/28 11:15:47 by zchagar          ###   ########.fr       */
+/*   Created: 2024/05/28 11:34:13 by zchagar           #+#    #+#             */
+/*   Updated: 2024/05/28 11:38:36 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void *ft_calloc(size_t elementCount, size_t elementSize)
+char	*ft_strrchr(char *str, int searchedChar)
 {
-	void	*p;
 	int	i;
+	char	*p;
 
-	i = 0;
-	p = malloc(elementCount * elementSize);
-	if( !p)
+	i = strlen(str);
+	p = 0;
+	while ( i >= 0)
 	{
-		return (NULL);
-	}
-	while (i <= elementCount)
-	{
-		*(unsigned char*)(p+i) = 0;
-		i++;
+		if (str[i] == searchedChar)
+		{
+			p =  &str[i];
+			return (p);
+		}
+		i--;
 	}
 }
-
+//FIXED ?
+int	main()
+{
+	printf("%s", ft_strrchr("eetettt",'e'));
+}
