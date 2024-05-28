@@ -6,38 +6,38 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:48:30 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/28 11:35:25 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/05/28 15:46:29 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-char	*ft_strchr(char *str, int searchedChar)
+#include "libft.h"
+
+char	*ft_strchr(const char *str, int searchedChar)
 {
-	int	i;
 	char	*p;
+	int		i;
 
 	i = 0;
-	p = 0;
+	p = NULL;
 	while (str[i] != '\0')
 	{
-		if (str[i] == searchedChar)
+		if (str[i] == (char)searchedChar)
 		{
-			p =  &str[i];
+			p = (char *)&str[i];
 			return (p);
 		}
 		i++;
 	}
-	if (str[i] == searchedChar)
-		{
-			p = &str[i];
-			return (p);
-		}
+	if (str[i] == (char) searchedChar)
+	{
+		p = (char *) &str[i];
+		return (p);
+	}
 	return (p);
 }
 //FIXED ?
-int	main()
+/*int	main()
 {
-	printf("%s", ft_strchr("teste",'e'));
-}
-
+	printf("%p\n", ft_strchr("teste", 256));
+	printf("%p", strchr("teste", 256));
+}*/

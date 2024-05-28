@@ -6,16 +6,16 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 19:15:14 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/28 10:48:22 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/05/28 13:21:07 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_atoi( const char *s)
+int	ft_atoi(const char *s)
 {
 	int	i;
-	int nb;
+	int	nb;
 
 	i = 0;
 	nb = 0;
@@ -30,13 +30,13 @@ int ft_atoi( const char *s)
 			nb = nb * 10 + (s[i] - 48);
 			i++;
 		}
-		if(s[0] == '-')
+		if (s[0] == '-')
 		{
-			return (- 1 * nb);
+			return (-1 * nb);
 		}
-		return(nb);
+		return (nb);
 	}
-	return(0);
+	return (0);
 }
 
 //FIXED ?
