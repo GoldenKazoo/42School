@@ -16,6 +16,7 @@ int	ft_tolower(int character);
 int	ft_toupper(int character);
 int	ft_isprint(int character);
 size_t	ft_strlen(const char *string);
+size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 
 
 
