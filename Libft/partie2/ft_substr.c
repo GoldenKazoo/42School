@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 11:01:23 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/28 11:15:47 by zchagar          ###   ########.fr       */
+/*   Created: 2024/05/29 17:13:09 by zchagar           #+#    #+#             */
+/*   Updated: 2024/05/29 18:58:36 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void *ft_calloc(size_t elementCount, size_t elementSize)
+char *ft_substr(char const *s, unsigned int start, size_t len)
 {
-	void	*p;
-	int	i;
+	char	*p;
+	size_t	plength;
+	size_t	pstart;
 
-	i = 0;
-	p = malloc(elementCount * elementSize);
-	if( !p)
-	{
+	plength = len - start;
+	p = malloc(sizeof(char) * plength + 1);
+	if (!p)
 		return (NULL);
-	}
-	while (i <= elementCount)
+	while (*s != '\0')
 	{
-		*(unsigned char*)(p+i) = 0;
-		i++;
+		p[pstart] = s[start]
+		pstart++;
+		start++;
 	}
+	return (p)
 }
-

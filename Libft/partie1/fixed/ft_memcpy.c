@@ -6,22 +6,25 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 12:58:38 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/27 13:01:44 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/05/29 14:17:25 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-void	ft_memcpy(void *dest, const void *src, size_t size)
+void	*ft_memcpy(void *dest, const void *src, size_t size)
 {
-	int	i;
-	int	*d;
+	size_t	i;
+	char	*d;
+	char	*s;
 
 	i = 0;
-	*d = dest;
-	while (i <= size)
+	d = (char *) dest;
+	s = (char *) src;
+	while (i < size)
 	{
-		d[i] = src[i];
+		d[i] = s[i];
 		i++;
 	}
+	return (d);
 }
