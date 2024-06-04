@@ -1,38 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 11:01:23 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/04 17:34:27 by zchagar          ###   ########.fr       */
+/*   Created: 2024/06/04 16:05:46 by zchagar           #+#    #+#             */
+/*   Updated: 2024/06/04 17:00:59 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
-void	*ft_calloc(size_t elementCount, size_t elementSize)
+void	ft_putchar_fd(char c, int fd)
 {
-	void	*p;
-	size_t	i;
-
-	if (elementCount * elementSize > 65535)
-		return (NULL);
-	i = 0;
-	p = malloc(elementCount * elementSize);
-	if (!p)
-	{
-		return (NULL);
-	}
-	ft_bzero(p, elementCount * elementSize);
-	return (p);
+	write(fd, &c, 1);
 }
-/*int	main()
-{
-	void *p;
-
-	p = calloc(10, 8);
-	printf("%p", p);
-	free(p);
-}*/

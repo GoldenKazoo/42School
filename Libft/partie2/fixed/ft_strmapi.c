@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 11:01:23 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/04 17:34:27 by zchagar          ###   ########.fr       */
+/*   Created: 2024/06/04 14:16:32 by zchagar           #+#    #+#             */
+/*   Updated: 2024/06/04 15:11:14 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t elementCount, size_t elementSize)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	void	*p;
-	size_t	i;
+	int		i;
+	int		size;
+	char	*p;
 
-	if (elementCount * elementSize > 65535)
-		return (NULL);
 	i = 0;
-	p = malloc(elementCount * elementSize);
+	size = ft_strlen(s);
+	p = malloc(sizeof(char) * size + 1);
 	if (!p)
-	{
 		return (NULL);
+	while (s[i] != '\0')
+	{
+		p[i] = f(i, s[i]);
+		i++;
 	}
-	ft_bzero(p, elementCount * elementSize);
+	p[i] = '\0';
 	return (p);
 }
-/*int	main()
-{
-	void *p;
-
-	p = calloc(10, 8);
-	printf("%p", p);
-	free(p);
-}*/

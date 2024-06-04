@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 11:01:23 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/04 17:34:27 by zchagar          ###   ########.fr       */
+/*   Created: 2024/06/04 14:02:56 by zchagar           #+#    #+#             */
+/*   Updated: 2024/06/04 14:16:09 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_calloc(size_t elementCount, size_t elementSize)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	void	*p;
-	size_t	i;
+	int	i;
 
-	if (elementCount * elementSize > 65535)
-		return (NULL);
 	i = 0;
-	p = malloc(elementCount * elementSize);
-	if (!p)
+	while (s[i] != '\0')
 	{
-		return (NULL);
+		f(i, s + i);
+		i++;
 	}
-	ft_bzero(p, elementCount * elementSize);
-	return (p);
 }
-/*int	main()
-{
-	void *p;
-
-	p = calloc(10, 8);
-	printf("%p", p);
-	free(p);
-}*/

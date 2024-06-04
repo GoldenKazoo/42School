@@ -1,38 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 11:01:23 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/04 17:34:27 by zchagar          ###   ########.fr       */
+/*   Created: 2024/06/04 14:24:32 by zchagar           #+#    #+#             */
+/*   Updated: 2024/06/04 15:06:58 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t elementCount, size_t elementSize)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	void	*p;
-	size_t	i;
+	int		i;
+	int		k;
+	int		size;
+	char	*p;
 
-	if (elementCount * elementSize > 65535)
-		return (NULL);
 	i = 0;
-	p = malloc(elementCount * elementSize);
+	k = 0;
+	size = ft_strlen(s1) + ft_strlen(s2);
+	p = malloc(sizeof(char) * size + 1);
 	if (!p)
-	{
 		return (NULL);
+	while (s1[i] != '\0')
+	{
+		p[i] = s1[i];
+		i++;
 	}
-	ft_bzero(p, elementCount * elementSize);
+	while (s2[k] != '\0')
+	{
+		p[i] = s2[k];
+		i++;
+		k++;
+	}
+		p[i] = '\0';
 	return (p);
 }
-/*int	main()
+/*int main()
 {
-	void *p;
-
-	p = calloc(10, 8);
-	printf("%p", p);
-	free(p);
+	printf("%s", ft_strjoin("", "abc"));
 }*/
