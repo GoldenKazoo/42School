@@ -78,7 +78,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (dest);
 }
 
-/*size_t main()
+size_t main()
 {
 	prsize_tf("%s", ft_strtrim("Bonjour tout le monde", "Bonjour"));
-}*/
+}
