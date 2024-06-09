@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 08:31:18 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/05 15:21:29 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/06 12:12:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stddef.h>
+
+typedef struct s_list
+{
+void *content;
+struct s_list *next;
+} t_list;
 
 int		ft_atoi(const char *s);
 int		ft_isalpha(int character);
