@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:39:00 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/10 15:23:54 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/10 17:35:10 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	if (!del)
-		return (0);
-	if (lst)
+	if (del)
 	{
-		(*del)(lst -> content);
-		free(lst);
+		if (lst)
+		{
+			(*del)(lst -> content);
+			free(lst);
+		}
 	}
 }

@@ -6,22 +6,26 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:39:00 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/10 16:20:34 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/10 17:33:28 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int	i;
+	int		i;
+	t_list	*temp;
 
 	i = 0;
-	while (!lst)
+	temp = ft_lstlast(*lst);
+	if (temp)
 	{
-		*lst = lst -> next;
+		temp -> next = new;
 	}
-	*lst = new;
+	else
+	{
+		*lst = new;
+	}
 }
 
-//not fixed
