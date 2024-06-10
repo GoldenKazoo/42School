@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:39:00 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/05 15:22:43 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/10 16:57:49 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstiter(t_list *lst, void (*f)(void *))
+int	ft_lstsize(t_list *lst)
 {
-    t_list  *temp;
+	int	i;
 
-    if(!f)
-        return(0);
-    while (lst)
-    {
-        (*f)(lst -> content);
-        lst = lst -> next;
-    }
+	i = 0;
+	while (lst)
+	{
+		lst = lst -> next;
+		i++;
+	}
+
+	return (i);
 }

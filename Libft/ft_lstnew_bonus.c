@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 11:01:23 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/04 17:34:27 by zchagar          ###   ########.fr       */
+/*   Created: 2024/06/05 10:39:00 by zchagar           #+#    #+#             */
+/*   Updated: 2024/06/10 16:26:46 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-void	*ft_calloc(size_t elementCount, size_t elementSize)
+t_list	*ft_lstnew(void *content)
 {
-	void	*p;
-	size_t	i;
+	t_list	*newlist;
 
-	if (elementCount * elementSize > 65535)
+	newlist = malloc(sizeof(t_list));
+	if (!newlist)
 		return (NULL);
-	i = 0;
-	p = malloc(elementCount * elementSize);
-	if (!p)
-	{
-		return (NULL);
-	}
-	ft_bzero(p, elementCount * elementSize);
-	return (p);
+	newlist -> content = content;
+	newlist -> next = NULL;
+	return (newlist);
 }
-/*int	main()
-{
-	void *p;
 
-	p = calloc(10, 8);
-	printf("%p", p);
-	free(p);
-}*/
+int	main()
+{
+	int		*nb;
+	t_list 	*mylist;
+
+	nb = 0;
+	mylist = ft_lstnew(nb);
+	ft_putnbr_fd((long)mylist->content, 1);
+}

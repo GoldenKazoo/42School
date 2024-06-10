@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 16:14:59 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/04 17:25:45 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/10 13:59:13 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,15 @@ void	ft_putendl_fd(char *s, int fd)
 
 	i = 0;
 	newline = '\n';
-	while (s[i] != '\0')
+	if (s)
 	{
-		write(fd, &s[i], 1);
-		i++;
+		while (s[i] != '\0')
+		{
+			write(fd, &s[i], 1);
+			i++;
+		}
+		write(fd, &newline, 1);
 	}
-	write(fd, &newline, 1);
 }
 
 /*int	main()

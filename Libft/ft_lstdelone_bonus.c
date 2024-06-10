@@ -1,45 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/04 14:24:32 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/04 15:06:58 by zchagar          ###   ########.fr       */
+/*   Created: 2024/06/05 10:39:00 by zchagar           #+#    #+#             */
+/*   Updated: 2024/06/10 15:23:54 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	int		i;
-	int		k;
-	int		size;
-	char	*p;
-
-	i = 0;
-	k = 0;
-	size = ft_strlen(s1) + ft_strlen(s2);
-	p = malloc(sizeof(char) * size + 1);
-	if (!p)
-		return (NULL);
-	while (s1[i] != '\0')
+	if (!del)
+		return (0);
+	if (lst)
 	{
-		p[i] = s1[i];
-		i++;
+		(*del)(lst -> content);
+		free(lst);
 	}
-	while (s2[k] != '\0')
-	{
-		p[i] = s2[k];
-		i++;
-		k++;
-	}
-		p[i] = '\0';
-	return (p);
 }
-/*int main()
-{
-	printf("%s", ft_strjoin("", "abc"));
-}*/

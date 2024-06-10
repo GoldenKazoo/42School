@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/04 16:08:07 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/04 17:02:08 by zchagar          ###   ########.fr       */
+/*   Created: 2024/05/28 11:01:23 by zchagar           #+#    #+#             */
+/*   Updated: 2024/06/10 15:11:53 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putnbr_fd(int n, int fd)
-{
-	char c;
+#include "libft.h"
+#include <limits.h>
 
-	if (n == -2147483648)
-		write(fd, "-2147483648", 11);
-	else
+void	*ft_calloc(size_t elementCount, size_t elementSize)
+{
+	void	*p;
+	size_t	i;
+
+	if (elementSize > 0 && elementCount > (UINT_MAX / elementSize))
+		return (NULL);
+	i = 0;
+	p = malloc(elementCount * elementSize);
+	if (!p)
 	{
-		if (n < 0)
-		{
-			write(fd, "-", 1);
-			n = -n;
-			ft_putnbr_fd(n, fd);
-		}
-		else if (n < 10)
-		{
-			c = n + '0';
-			write(fd, &c, 1);
-		}
-		else
-		{
-			ft_putnbr_fd(n / 10, fd);
-			c = (n % 10) + '0';
-			write(fd, &c, 1);
-		}
+		return (NULL);
 	}
+	ft_bzero(p, elementCount * elementSize);
+	return (p);
 }
+/*int	main()
+{
+	void *p;
+
+	p = calloc(10, 8);
+	printf("%p", p);
+	free(p);
+}*/

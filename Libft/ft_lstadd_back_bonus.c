@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 12:17:18 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/28 09:58:00 by zchagar          ###   ########.fr       */
+/*   Created: 2024/06/05 10:39:00 by zchagar           #+#    #+#             */
+/*   Updated: 2024/06/10 16:20:34 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *string)
+void ft_lstadd_back(t_list **lst, t_list *new)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (string[i] != '\0')
+	while (!lst)
 	{
-		i++;
+		*lst = lst -> next;
 	}
-	return (i);
+	*lst = new;
 }
+
+//not fixed
