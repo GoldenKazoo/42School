@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:39:00 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/10 16:57:49 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/10 17:55:58 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,5 @@ int	ft_lstsize(t_list *lst)
 		lst = lst -> next;
 		i++;
 	}
-
 	return (i);
 }

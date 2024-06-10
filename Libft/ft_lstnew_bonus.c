@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:39:00 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/10 16:26:46 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/10 17:55:36 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ t_list	*ft_lstnew(void *content)
 	newlist -> next = NULL;
 	return (newlist);
 }
-
-int	main()
+/*int	main()
 {
 	int		*nb;
 	t_list 	*mylist;
@@ -33,4 +32,4 @@ int	main()
 	nb = 0;
 	mylist = ft_lstnew(nb);
 	ft_putnbr_fd((long)mylist->content, 1);
-}
+}*/
