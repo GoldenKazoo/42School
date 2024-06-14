@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:33:26 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/14 10:02:44 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/14 15:28:09 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	main()
 	// }
 	// test = get_next_line(-10);
 	// printf("%s", test);
+	test = get_next_line(fd);
+	printf("%s", test);
 	test = get_next_line(fd);
 	printf("%s", test);
 	// printf("%s", get_next_line(fd));

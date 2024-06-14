@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 11:26:02 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/14 10:30:18 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/14 15:56:35 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,8 @@
 size_t	ft_strlen(char *string)
 {
 	size_t	i;
-	char	*v;
 
-	v = "";
 	i = 0;
-	if (string == v || v == NULL)
-		return (i);
 	while (string[i] != '\0')
 	{
 		i++;
@@ -102,7 +98,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 		}
 		i++;
 	}
-	p[j] = '\0';
+	p[j+i] = '\0';
 	return (p);
 }
 
@@ -133,7 +129,7 @@ char	*ft_strchr(const char *str, int searchedchar)
 
 char	*get_next_line(int fd)
 {
-	static char	*stash;
+	char static	*stash;
 	char		*buffer;
 	char		*line;
 	char		*strchr;
@@ -152,7 +148,7 @@ char	*get_next_line(int fd)
 		stash = "";
 	}
 //ETAPE 1
-	if (fd < 0 || BUFFER_SIZE < 0 || read(fd, 0, 0))
+	if (fd < 0 || BUFFER_SIZE < 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 //ETAPE 2
 	if (ft_strchr(stash, '\n') != NULL && stash != NULL)
@@ -170,14 +166,23 @@ char	*get_next_line(int fd)
 		stash = ft_strjoin(stash, buffer);
 		if (!stash)
 		{
-			free(stash);
+			free(buffer);
 			return (NULL);
 		}
 	}
 	free(buffer);
 	strchr = ft_strdup(ft_strchr(stash,'\n') + 1);
 	line = ft_substr(stash, 0, ft_strlen(stash) - ft_strlen(strchr));
-	stash = ft_substr(strchr,0, ft_strlen(stash));
+	stash = ft_substr(strchr,0, ft_strlen(strchr));
+	// free(tmp1);
+	// free(tmp2);
 	free(strchr);
 	return (line);
 }
+
+
+
+// Sal'\n'ut c'\n'omm|         ent ca va 12
+// Sal'\n'ut c'\n'omm|         ent ca va 8
+
+// Sal'\n'ut c'\n'omm|
