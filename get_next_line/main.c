@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:33:26 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/12 18:40:56 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/14 10:02:44 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,29 @@
 int	main()
 {
 	int		fd;
-	char	*buffer;
+	int		i;
+	char 	*test;
 
-	buffer = malloc(10);
 	fd = open("emiya.txt", O_RDONLY);
-	 printf("%s", get_next_line(fd));
-	 printf("%s", get_next_line(fd));
-	 printf("%s", get_next_line(fd));
-	 printf("%s", get_next_line(fd));
-	 printf("%s", get_next_line(fd));
-	 printf("%s", get_next_line(fd));
-	 printf("%s", get_next_line(fd));
-	 printf("%s", get_next_line(fd));
-	 printf("%s", get_next_line(fd));
-	 printf("%s", get_next_line(fd));
-	 printf("%s", get_next_line(fd));
+	i = 0;
+	// while (i < 8)
+	// {
+	// 	printf("%s", get_next_line(fd));
 
+	// }
+	// test = get_next_line(-10);
+	// printf("%s", test);
+	test = get_next_line(fd);
+	printf("%s", test);
+	// printf("%s", get_next_line(fd));
+	// printf("%s", get_next_line(fd));
+	// printf("%s", get_next_line(fd));
+	// printf("%s", get_next_line(fd));
+	// printf("%s", get_next_line(fd));
+/*-------------------------------------*/
+	//  printf("%s", get_next_line(fd));
+	//  printf("%s", get_next_line(fd));
+	//  printf("%s", get_next_line(fd));
+	free(test);
 	close(fd);
 }

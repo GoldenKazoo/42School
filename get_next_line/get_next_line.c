@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 11:26:02 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/12 18:49:09 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/14 10:30:18 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@
 size_t	ft_strlen(char *string)
 {
 	size_t	i;
+	char	*v;
 
+	v = "";
 	i = 0;
+	if (string == v || v == NULL)
+		return (i);
 	while (string[i] != '\0')
 	{
 		i++;
@@ -48,19 +52,18 @@ char	*ft_strdup(char *src)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	int		i;
-	int		k;
+	size_t		i;
+	size_t		k;
 	char	*p;
 
 	i = 0;
 	k = 0;
-	if (!s1 && s2)
-		return (ft_strdup(s2));
-	if (s1 && !s2)
-		return (ft_strdup(s1));
-	if (!s1 && !s2)
-		return (NULL);
-	p = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
+
+	if (!s1)
+		s1 = "";
+	if (!s2)
+		s2 = "";
+	p = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!p)
 		return (NULL);
 	while (s1[i] != '\0')
@@ -88,7 +91,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 		return (ft_strdup(""));
 	if (len > ft_strlen(s + start))
 		len = ft_strlen(s + start);
-	p = malloc(sizeof(char) * len + 1);
+	p = malloc(sizeof(char) * len);
 	if (!p)
 		return (NULL);
 	while (s[i] != '\0')
@@ -115,7 +118,7 @@ char	*ft_strchr(const char *str, int searchedchar)
 		if (str[i] == (char)searchedchar)
 		{
 			p = (char *)&str[i];
-			return (p + 1);
+			return (p);
 		}
 		i++;
 	}
@@ -127,19 +130,6 @@ char	*ft_strchr(const char *str, int searchedchar)
 	return (p);
 }
 
-char	*return_line(char *s1)
-{
-	int		i;
-	char	*extractedstr;
-
-	i = 0;
-	while (s1[i] != '\n')
-	{
-		i++;
-	}
-	extractedstr = ft_substr(s1, 0, i);
-	return (extractedstr);
-}
 
 char	*get_next_line(int fd)
 {
@@ -149,23 +139,45 @@ char	*get_next_line(int fd)
 	char		*strchr;
 	int			x;
 
-	buffer = malloc(BUFFER_SIZE);
+	x = 1;
+	if(x <= 0)
+		return ("");
+	buffer = calloc((BUFFER_SIZE + 1), sizeof(char));
+	if (!buffer)
+	{
+		return (NULL);
+	}
 	if (stash == NULL)
+	{
 		stash = "";
+	}
+//ETAPE 1
 	if (fd < 0 || BUFFER_SIZE < 0 || read(fd, 0, 0))
 		return (NULL);
-	x = read(fd, buffer, BUFFER_SIZE);
-	if (x == 0)
-		return("");
-	while (ft_strchr(stash, '\n') == NULL)
+//ETAPE 2
+	if (ft_strchr(stash, '\n') != NULL && stash != NULL)
 	{
-		stash = ft_strjoin(stash, buffer);
-		read(fd, buffer, BUFFER_SIZE);
+		strchr = ft_strchr(stash,'\n') + 1;
+		line = ft_substr(stash, 0, ft_strlen(stash) - ft_strlen(strchr));
+		stash = ft_substr(strchr,0, ft_strlen(stash));
+		free(buffer);
+		return (line);
 	}
-	strchr = ft_strchr(stash,'\n');
+
+	while (ft_strchr(stash, '\n') == NULL &&  x != 0)
+	{
+		x = read(fd, buffer, BUFFER_SIZE);
+		stash = ft_strjoin(stash, buffer);
+		if (!stash)
+		{
+			free(stash);
+			return (NULL);
+		}
+	}
+	free(buffer);
+	strchr = ft_strdup(ft_strchr(stash,'\n') + 1);
 	line = ft_substr(stash, 0, ft_strlen(stash) - ft_strlen(strchr));
-	stash = ft_substr(strchr,0, ft_strlen(stash) - ft_strlen(strchr));
-	stash = ft_strjoin(stash, buffer);
+	stash = ft_substr(strchr,0, ft_strlen(stash));
+	free(strchr);
 	return (line);
 }
-
