@@ -13,38 +13,37 @@ SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 				ft_strnstr.c ft_strrchr.c ft_strtrim.c \
 				ft_substr.c ft_tolower.c ft_toupper.c
 
-SRCS_BONUS = ft_lstnew_bonus.c ft_lstsize_bonus.c ft_lstadd_front_bonus.c \
+SRCSBONUS = ft_lstnew_bonus.c ft_lstsize_bonus.c ft_lstadd_front_bonus.c \
 				ft_lstiter_bonus.c ft_lstlast_bonus.c ft_lstadd_back_bonus.c \
 				ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstmap_bonus.c
 
-INCS = ./includes
+SRCSALL = ${SRCS} ${SRCS_BONUS}
 
-OBJS = *.o
+INCS = .
+
+OBJS = ${SRCS:.c=.o}
+
+OBJSBONUS = ${SRCSBONUS:.c=.o}
+
+OBJSALL = ${OBJS} ${OBJSBONUS}
 
 all: ${NAME}
 
+.c.o:
+		cc -I${INCS} ${CFLAGS} -c $< -o ${<:.c=.o}
+
 ${NAME}:	${OBJS}
-		cc ${CFLAGS} -c ${SRCS} -I ${INCS}
-		ar rc ${NAME} ${OBJS}
+		ar rcs ${NAME} ${OBJS}
 
-bonus: ${SRCS_BONUS}
-		cc ${CFLAGS} -c ${SRCS_BONUS} -I ${INCS}
-		ar rc ${NAME} ${OBJS}
-
-ifneq ($(shell uname), Darwin)
-breaker:
-			cc -nostartfiles -shared -fPIC -ldl $(CFLAGS) -o libft.so $(SRCS) $(SRCS_BONUS)
-else
-breaker:
-			cc -dynamiclib $(CFLAGS) -o libft.so $(SRCS) $(SRCS_BONUS) -L../obj -lmalloc
-endif
+bonus: ${OBJSALL}
+		ar rcs ${NAME} ${OBJSALL}
 
 clean:
-		-rm -f ${OBJS}
+		-rm -f ${OBJSALL}
 
 fclean: clean
 		-rm -f ${NAME}
 
 re : fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

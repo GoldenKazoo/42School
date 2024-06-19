@@ -6,12 +6,11 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 19:05:57 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/10 10:13:15 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/11 10:57:51 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <limits.h>
+#include "libft.h"
 
 static long int	ft_getrange(int n)
 {

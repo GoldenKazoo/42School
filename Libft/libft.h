@@ -6,16 +6,16 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 08:31:18 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/10 16:30:00 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/11 12:27:13 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 typedef struct s_list
 {
@@ -49,14 +49,13 @@ void	ft_putnbr_fd(int n, int fd);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
-void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-char	*ft_strchr(const char *str, int searchedChar);
+char	*ft_strchr(const char *str, int searchedchar);
 char	*ft_strdup(const char *src);
-char	*ft_strrchr(char *str, int searchedChar);
+char	*ft_strrchr(const char *str, int searchedchar);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);

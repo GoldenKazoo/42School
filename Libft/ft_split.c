@@ -6,14 +6,13 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:39:00 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/10 13:24:04 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/11 10:30:57 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-int	ft_countwords(const char *s, char c)
+static int	ft_countwords(const char *s, char c)
 {
 	size_t	i;
 	size_t	count;
@@ -31,7 +30,7 @@ int	ft_countwords(const char *s, char c)
 	return (count);
 }
 
-void	*ft_free_split(char **p, int len)
+static void	*ft_free_split(char **p, int len)
 {
 	int	i;
 
@@ -45,7 +44,7 @@ void	*ft_free_split(char **p, int len)
 	return (NULL);
 }
 
-char	*ft_dupword(const char *str, int start, int end)
+static char	*ft_dupword(const char *str, int start, int end)
 {
 	char	*p;
 	int		i;
@@ -64,7 +63,7 @@ char	*ft_dupword(const char *str, int start, int end)
 	return (p);
 }
 
-void	ft_initvar(size_t *i, int *j, int *k)
+static void	ft_initvar(size_t *i, int *j, int *k)
 {
 	*i = -1;
 	*j = -1;

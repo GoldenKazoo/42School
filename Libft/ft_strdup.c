@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:17:20 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/28 13:31:12 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/11 10:25:55 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ char	*ft_strdup(const char *src)
 	p[i] = '\0';
 	return (p);
 }
-//FIXED ?
 /*int	main()
 {
 	printf("%s", ft_strdup("123"));

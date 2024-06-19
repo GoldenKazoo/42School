@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 12:58:38 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/29 14:17:25 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/11 10:08:34 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t size)
 	i = 0;
 	d = (char *) dest;
 	s = (char *) src;
+	if (!src && !dest)
+		return (NULL);
 	while (i < size)
 	{
 		d[i] = s[i];

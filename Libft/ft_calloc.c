@@ -6,27 +6,26 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:01:23 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/10 15:11:53 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/11 10:23:31 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <limits.h>
 
-void	*ft_calloc(size_t elementCount, size_t elementSize)
+void	*ft_calloc(size_t elementcount, size_t elementsize)
 {
 	void	*p;
 	size_t	i;
 
-	if (elementSize > 0 && elementCount > (UINT_MAX / elementSize))
+	if (elementsize > 0 && elementcount > (UINT_MAX / elementsize))
 		return (NULL);
 	i = 0;
-	p = malloc(elementCount * elementSize);
+	p = malloc(elementcount * elementsize);
 	if (!p)
 	{
 		return (NULL);
 	}
-	ft_bzero(p, elementCount * elementSize);
+	ft_bzero(p, elementcount * elementsize);
 	return (p);
 }
 /*int	main()

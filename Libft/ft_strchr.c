@@ -6,13 +6,13 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:48:30 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/28 15:46:29 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/11 11:13:38 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *str, int searchedChar)
+char	*ft_strchr(const char *str, int searchedchar)
 {
 	char	*p;
 	int		i;
@@ -21,14 +21,14 @@ char	*ft_strchr(const char *str, int searchedChar)
 	p = NULL;
 	while (str[i] != '\0')
 	{
-		if (str[i] == (char)searchedChar)
+		if (str[i] == (char)searchedchar)
 		{
 			p = (char *)&str[i];
 			return (p);
 		}
 		i++;
 	}
-	if (str[i] == (char) searchedChar)
+	if (str[i] == (char) searchedchar)
 	{
 		p = (char *) &str[i];
 		return (p);

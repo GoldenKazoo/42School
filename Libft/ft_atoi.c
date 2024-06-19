@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 19:15:14 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/28 19:49:28 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/11 09:26:02 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	ft_atoi(const char *s)
 	return (nb);
 }
 
-//FIXED ?
 /*int	main()
 {
 	printf("%d",ft_atoi("-5"));

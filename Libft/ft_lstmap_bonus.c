@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:39:00 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/10 19:48:40 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/11 09:10:35 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,18 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*lstmap;
 	t_list	*new;
+	void	*lstcont;
 
 	if (!f || !del || !lst)
 		return (NULL);
-	lstmap = ft_lstnew(f(lst -> content));
-	lst = lst -> next;
+	lstmap = NULL;
 	while (lst)
 	{
-		new = ft_lstnew(f(lst->content));
+		lstcont = f(lst->content);
+		new = ft_lstnew(lstcont);
 		if (!new)
 		{
-			del(lstmap->content);
+			del(lstcont);
 			ft_lstclear(&lstmap, del);
 			return (NULL);
 		}

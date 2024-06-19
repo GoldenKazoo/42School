@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:28:34 by zchagar           #+#    #+#             */
-/*   Updated: 2024/05/29 14:54:54 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/11 10:16:02 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	i = 0;
 	d = (char *) dest;
 	s = (char *) src;
+	if (!dest && !src)
+		return (NULL);
 	if (d > s)
 	{
-		while (n > 0)
+		while (n-- > 0)
 		{
-			n--;
 			d[n] = s[n];
 		}
 	}
