@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:33:26 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/14 15:28:09 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/19 14:37:54 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,18 @@ int	main()
 
 	fd = open("emiya.txt", O_RDONLY);
 	i = 0;
-	// while (i < 8)
-	// {
-	// 	printf("%s", get_next_line(fd));
-
-	// }
-	// test = get_next_line(-10);
+	while (i <= 1)
+	{
+		test = get_next_line(fd);
+		printf("%s", test);
+		free(test);
+		i++;
+	}
 	// printf("%s", test);
-	test = get_next_line(fd);
-	printf("%s", test);
-	test = get_next_line(fd);
-	printf("%s", test);
+	// test = get_next_line(fd);
+	// printf("%s", test);
+	// test = get_next_line(fd);
+	// printf("%s", test);
 	// printf("%s", get_next_line(fd));
 	// printf("%s", get_next_line(fd));
 	// printf("%s", get_next_line(fd));
@@ -41,6 +42,6 @@ int	main()
 	//  printf("%s", get_next_line(fd));
 	//  printf("%s", get_next_line(fd));
 	//  printf("%s", get_next_line(fd));
-	free(test);
+	// free (test);
 	close(fd);
 }

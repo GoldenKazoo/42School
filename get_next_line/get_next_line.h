@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 15:18:23 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/12 18:42:44 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/19 14:31:32 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,18 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <limits.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
 # endif
 
 char	*get_next_line(int fd);
+size_t	ft_strlen(char *string);
+char	*ft_strdup(char *src);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_substr(char *s, unsigned int start, size_t len);
+char	*ft_strchr(const char *str, int searchedchar);
+
 
 #endif
