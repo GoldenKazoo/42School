@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 11:26:02 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/19 14:33:34 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/21 12:31:33 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,13 +107,15 @@ char	*get_next_line(int fd)
 	{
 		x = read(fd, buffer, BUFFER_SIZE);
 		if (x > 0)
+		{
 			stash = ft_add_buffer(stash, buffer);
+		}
 		else
 			check = 1;
+		free (buffer);
 	}
 	if (x <= 0 || fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
-	free(buffer);
 	line = ft_extract_line(stash);
 	stash = ft_crop_stash(stash);
 	return (line);
