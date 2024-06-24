@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:33:26 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/24 15:54:05 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/24 17:03:26 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main()
 	int		fd;
 	char 	*test;
 
-	fd = open("multiple_line_no_nl", O_RDONLY);
+	fd = open("emiya.txt", O_RDONLY);
 	while (1)
 	{
 		test = get_next_line(fd);

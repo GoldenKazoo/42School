@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:39:36 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/24 16:15:05 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/24 17:13:17 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ char	*get_next_line(int fd)
 	}
 	if (read(fd, buffer, BUFFER_SIZE) <= 0 || fd < 0 || read(fd, 0, 0) < 0)
 	{
+		free(stash);
 		free(buffer);
 		return (NULL);
 	}
