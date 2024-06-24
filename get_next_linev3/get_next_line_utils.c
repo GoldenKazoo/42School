@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/12 11:26:02 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/19 09:40:49 by zchagar          ###   ########.fr       */
+/*   Created: 2024/06/12 15:16:50 by zchagar           #+#    #+#             */
+/*   Updated: 2024/06/24 13:26:13 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-#include "get_next_line.h"
 
 size_t	ft_strlen(char *string)
 {
@@ -59,9 +58,12 @@ char	*ft_strjoin(char *s1, char *s2)
 		s1 = "";
 	if (!s2)
 		s2 = "";
-	p = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	p = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
 	if (!p)
+	{
+		free(p);
 		return (NULL);
+	}
 	while (s1[i] != '\0')
 	{
 		p[i] = s1[i];
@@ -70,6 +72,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (s2[k] != '\0')
 		p[i++] = s2[k++];
 	p[i] = '\0';
+	// free(s1);
+	// free(s2);
 	return (p);
 }
 
@@ -87,7 +91,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 		return (ft_strdup(""));
 	if (len > ft_strlen(s + start))
 		len = ft_strlen(s + start);
-	p = malloc(sizeof(char) * len);
+	p = malloc(sizeof(char) * len + 1);
 	if (!p)
 		return (NULL);
 	while (s[i] != '\0')
@@ -98,7 +102,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 		}
 		i++;
 	}
-	p[j+i] = '\0';
+	p[j] = '\0';
 	return (p);
 }
 
@@ -125,69 +129,3 @@ char	*ft_strchr(const char *str, int searchedchar)
 	}
 	return (p);
 }
-
-
-char	*get_next_line(int fd)
-{
-	static char	*stash;
-	char		*buffer;
-	char		*line;
-	char		*strchr;
-	static int			x;
-
-	buffer = calloc((BUFFER_SIZE + 1), sizeof(char));
-	if (!buffer)
-	{
-		return (NULL);
-	}
-	if (stash == NULL)
-	{
-		stash = ft_strdup("");
-	}
-//ETAPE 1
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-	{
-		return (NULL);
-	}
-//ETAPE 2
-	if (ft_strchr(stash, '\n') != NULL && stash != NULL)
-	{
-
-		strchr = ft_strchr(stash,'\n') + 1;
-		line = ft_substr(stash, 0, ft_strlen(stash) - ft_strlen(strchr));
-		stash = ft_substr(strchr,0, ft_strlen(stash));
-		free(buffer);
-		return (line);
-	}
-
-	while (ft_strchr(stash, '\n') == NULL)
-	{
-				printf("%s","ALED");
-		x = read(fd, buffer, BUFFER_SIZE);
-		stash = ft_strjoin(stash, buffer);
-		if (!stash)
-		{
-			free(buffer);
-			return (NULL);
-		}
-	}
-	free(buffer);
-	strchr = ft_strdup(ft_strchr(stash,'\n') + 1);
-	line = ft_substr(stash, 0, ft_strlen(stash) - ft_strlen(strchr));
-	stash = ft_substr(strchr,0, ft_strlen(strchr));
-	// free(tmp1);
-	// free(tmp2);
-
-	if(x <= 0)
-		return ("");
-	printf("%d\n", x);
-	free(strchr);
-	return (line);
-}
-
-
-
-// Sal'\n'ut c'\n'omm|         ent ca va 12
-// Sal'\n'ut c'\n'omm|         ent ca va 8
-
-// Sal'\n'ut c'\n'omm|
