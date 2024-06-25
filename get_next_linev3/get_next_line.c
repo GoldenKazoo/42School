@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:39:36 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/24 17:13:17 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/25 15:17:24 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,22 +55,14 @@ char	*ft_join_and_free(char *string1, char *string2)
 	free(string1);
 	return (result);
 }
-
-char	*get_next_line(int fd)
+char	*ft_exit_conditions(char *buffer, char *stash, int fd)
 {
-	static char	*stash;
-	char		*line;
-	char		*buffer;
-	int			read_value;
-
-	read_value = 1;
-	buffer = calloc(sizeof(char), BUFFER_SIZE + 1);
 	if (!buffer)
 	{
 		free(buffer);
 		return (NULL);
 	}
-	if (read(fd, buffer, BUFFER_SIZE) <= 0 || fd < 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || read(fd, 0, 0) < 0 || BUFFER_SIZE <= 0)
 	{
 		free(stash);
 		free(buffer);
@@ -83,12 +75,39 @@ char	*get_next_line(int fd)
 		if(!stash)
 			return (NULL);
 	}
-	while ((ft_strchr(stash, '\n') == NULL || ft_strchr(stash, '\0') == NULL) && read_value > 0)
+	return (stash);
+}
+char	*get_next_line(int fd)
+{
+	static char	*stash;
+	char		*line;
+	char		*buffer;
+	int			read_value;
+
+	buffer = calloc(sizeof(char), BUFFER_SIZE + 1);
+	stash = (ft_exit_conditions(buffer, stash, fd));
+	if (stash == NULL)
+		return (NULL);
+	while ((ft_strchr(stash, '\n') == NULL || *stash == '\0'))
 	{
-		stash = ft_join_and_free(stash, buffer);
 		read_value = read(fd, buffer, BUFFER_SIZE);
+		if (read_value <= 0 && *stash == '\0')
+		{
+			free(buffer);
+			return (NULL);
+		}
+		if (read_value <= 0)
+			break;
+		stash = ft_join_and_free(stash, buffer);
 		if (!stash)
 			return (NULL);
+		if (read_value <= 0 && *stash == '\0')
+		{
+			free(buffer);
+			return (NULL);
+		}
+		if (read_value <= 0)
+			break;
 	}
 	line = ft_extract_line(stash);
 	stash = ft_crop_stash(stash);
