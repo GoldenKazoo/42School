@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 15:16:50 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/25 17:18:51 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/24 13:26:13 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ char	*ft_strdup(char *src)
 	return (p);
 }
 
-char	*ft_strjoin(char *s1, char *s2, int readvalue)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	int		i;
-	int		k;
+	size_t		i;
+	size_t		k;
 	char	*p;
 
 	i = 0;
@@ -58,7 +58,7 @@ char	*ft_strjoin(char *s1, char *s2, int readvalue)
 		s1 = "";
 	if (!s2)
 		s2 = "";
-	p = malloc(sizeof(char) * (ft_strlen(s1) + readvalue) + 1);
+	p = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
 	if (!p)
 	{
 		free(p);
@@ -69,7 +69,7 @@ char	*ft_strjoin(char *s1, char *s2, int readvalue)
 		p[i] = s1[i];
 		i++;
 	}
-	while (s2[k] != '\0' || k <= readvalue)
+	while (s2[k] != '\0')
 		p[i++] = s2[k++];
 	p[i] = '\0';
 	// free(s1);

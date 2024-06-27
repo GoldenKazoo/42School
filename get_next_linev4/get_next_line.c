@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:39:36 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/25 17:19:25 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/27 10:03:36 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,15 @@ char	*ft_exit_conditions(char *buffer, char *stash, int fd)
 {
 	if (!buffer)
 	{
+		free(stash);
+		stash = NULL;
 		free(buffer);
 		return (NULL);
 	}
 	if (fd < 0 || read(fd, 0, 0) < 0 || BUFFER_SIZE <= 0)
 	{
 		free(stash);
+		stash = NULL;
 		free(buffer);
 		return (NULL);
 	}
@@ -73,13 +76,17 @@ char	*ft_exit_conditions(char *buffer, char *stash, int fd)
 	{
 		stash = ft_strdup("");
 		if(!stash)
+		{
+			free(stash);
+			stash = NULL;
 			return (NULL);
+		}
 	}
 	return (stash);
 }
 char	*get_next_line(int fd)
 {
-	static char	*stash;
+	static char	*stash = NULL;
 	char		*line;
 	char		*buffer;
 	int			read_value;
@@ -88,20 +95,22 @@ char	*get_next_line(int fd)
 	stash = (ft_exit_conditions(buffer, stash, fd));
 	if (stash == NULL)
 		return (NULL);
-	while ((ft_strchr(stash, '\n') == NULL || ft_strchr(stash, '\0') == NULL))
+	while ((ft_strchr(stash, '\n') == NULL || *stash == '\0'))
 	{
 		read_value = read(fd, buffer, BUFFER_SIZE);
-		stash = ft_join_and_free(stash, buffer);
-		if (!stash)
-			return (NULL);
 		if (read_value <= 0 && *stash == '\0')
 		{
+			free(stash);
+			stash = NULL;
 			free(buffer);
-			// free(stash);
 			return (NULL);
 		}
 		if (read_value <= 0)
 			break;
+		buffer[read_value] = '\0';
+		stash = ft_join_and_free(stash, buffer);
+		if (!stash)
+			return (NULL);
 	}
 	line = ft_extract_line(stash);
 	stash = ft_crop_stash(stash);

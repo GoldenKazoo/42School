@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 15:18:23 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/25 17:19:18 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/27 15:23:15 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ char	*ft_strdup(char *src);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_substr(char *s, unsigned int start, size_t len);
 char	*ft_strchr(const char *str, int searchedchar);
-
 
 #endif

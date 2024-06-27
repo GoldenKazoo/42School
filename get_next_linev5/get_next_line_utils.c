@@ -6,18 +6,19 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 15:16:50 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/25 17:18:51 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/27 15:25:05 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 size_t	ft_strlen(char *string)
 {
 	size_t	i;
 
 	i = 0;
+	if (!string)
+		return (i);
 	while (string[i] != '\0')
 	{
 		i++;
@@ -45,20 +46,27 @@ char	*ft_strdup(char *src)
 	return (p);
 }
 
-char	*ft_strjoin(char *s1, char *s2, int readvalue)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	int		i;
-	int		k;
-	char	*p;
+	size_t		i;
+	size_t		k;
+	char		*p;
 
 	i = 0;
 	k = 0;
-
 	if (!s1)
-		s1 = "";
+	{
+		s1 = ft_strdup("");
+		if (!s1)
+			return (NULL);
+	}
 	if (!s2)
-		s2 = "";
-	p = malloc(sizeof(char) * (ft_strlen(s1) + readvalue) + 1);
+	{
+		s2 = ft_strdup("");
+		if (!s2)
+			return (NULL);
+	}
+	p = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
 	if (!p)
 	{
 		free(p);
@@ -69,11 +77,10 @@ char	*ft_strjoin(char *s1, char *s2, int readvalue)
 		p[i] = s1[i];
 		i++;
 	}
-	while (s2[k] != '\0' || k <= readvalue)
+	while (s2[k] != '\0')
 		p[i++] = s2[k++];
 	p[i] = '\0';
-	// free(s1);
-	// free(s2);
+	free(s1);
 	return (p);
 }
 
@@ -113,6 +120,8 @@ char	*ft_strchr(const char *str, int searchedchar)
 
 	i = 0;
 	p = NULL;
+	if (!str)
+		return (NULL);
 	while (str[i] != '\0')
 	{
 		if (str[i] == (char)searchedchar)

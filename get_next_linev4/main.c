@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:33:26 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/25 17:06:35 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/27 12:22:39 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int	main()
 	int		fd;
 	char 	*test;
 
-	fd = open("43_no_nl", O_RDONLY);
+	fd = open("read_error.txt", O_RDONLY);
 	while (1)
 	{
-		test = get_next_line(fd);
-		printf("%s", test);
-		free(test);
+	test = get_next_line(fd);
+	printf("%s", test);
+	free(test);
 		if (!test)
 			break ;
 	}

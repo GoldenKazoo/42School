@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:33:26 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/25 17:06:35 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/27 15:09:33 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ int	main()
 	int		fd;
 	char 	*test;
 
-	fd = open("43_no_nl", O_RDONLY);
+	fd = open("limits", O_RDONLY);
 	while (1)
+
 	{
-		test = get_next_line(fd);
-		printf("%s", test);
-		free(test);
+	test = get_next_line(fd);
+	printf("%s", test);
+	free(test);
 		if (!test)
 			break ;
 	}
@@ -44,3 +45,25 @@ int	main()
 	// free (test);
 	close(fd);
 }
+
+//   int    main(void)
+// {
+//     char *line;
+//     char *name = "read_error.txt";
+//     int fd = open(name, O_RDONLY);
+//     line = get_next_line(fd);
+//     printf("%s\n", line);
+//     free(line);
+//     line = get_next_line(fd);
+//     printf("%s\n", line);
+//     free(line);
+//     line = get_next_line(10);
+//     printf("%s\n", line);
+//     free(line);
+//     close(fd);
+//     fd = open(name, O_RDONLY);
+//     line = get_next_line(fd);
+//     printf("%s\n", line);
+//     free(line);
+//     return (0);
+// }

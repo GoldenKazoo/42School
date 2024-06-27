@@ -6,7 +6,7 @@
 /*   By: zchagar <zchagar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:39:36 by zchagar           #+#    #+#             */
-/*   Updated: 2024/06/25 17:19:25 by zchagar          ###   ########.fr       */
+/*   Updated: 2024/06/27 15:22:16 by zchagar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ char	*ft_extract_line(char *stash)
 		return (NULL);
 	return (line);
 }
+
 char	*ft_crop_stash(char *stash)
 {
-	int		i;
+	int			i;
 	static char	*new_stash;
 
 	i = 0;
@@ -47,64 +48,38 @@ char	*ft_crop_stash(char *stash)
 	}
 }
 
-char	*ft_join_and_free(char *string1, char *string2)
+char	*ft_free_stash(char *stash)
 {
-	char	*result;
+	free(stash);
+	stash = NULL;
+	return (NULL);
+}
 
-	result = ft_strjoin(string1, string2);
-	free(string1);
-	return (result);
-}
-char	*ft_exit_conditions(char *buffer, char *stash, int fd)
-{
-	if (!buffer)
-	{
-		free(buffer);
-		return (NULL);
-	}
-	if (fd < 0 || read(fd, 0, 0) < 0 || BUFFER_SIZE <= 0)
-	{
-		free(stash);
-		free(buffer);
-		return (NULL);
-	}
-	// stash = ft_join_and_free(stash, buffer);
-	if (!stash)
-	{
-		stash = ft_strdup("");
-		if(!stash)
-			return (NULL);
-	}
-	return (stash);
-}
 char	*get_next_line(int fd)
 {
-	static char	*stash;
-	char		*line;
-	char		*buffer;
-	int			read_value;
+	static char		*stash = NULL;
+	char			*line;
+	static char		buffer[BUFFER_SIZE + 1];
+	int				read_value;
 
-	buffer = calloc(sizeof(char), BUFFER_SIZE + 1);
-	stash = (ft_exit_conditions(buffer, stash, fd));
-	if (stash == NULL)
-		return (NULL);
-	while ((ft_strchr(stash, '\n') == NULL || ft_strchr(stash, '\0') == NULL))
+	read_value = BUFFER_SIZE;
+	while ((ft_strchr(stash, '\n') == NULL) && (read_value == BUFFER_SIZE))
 	{
 		read_value = read(fd, buffer, BUFFER_SIZE);
-		stash = ft_join_and_free(stash, buffer);
-		if (!stash)
-			return (NULL);
-		if (read_value <= 0 && *stash == '\0')
+		if (fd < 0 || read(fd, 0, 0) < 0 || BUFFER_SIZE <= 0 || read_value < 0)
 		{
-			free(buffer);
-			// free(stash);
+			stash = ft_free_stash(stash);
 			return (NULL);
 		}
-		if (read_value <= 0)
-			break;
+		if (read_value == 0 && ft_strlen(stash) == 0)
+		{
+			stash = ft_free_stash(stash);
+			return (NULL);
+		}
+		buffer[read_value] = '\0';
+		stash = ft_strjoin(stash, buffer);
 	}
 	line = ft_extract_line(stash);
 	stash = ft_crop_stash(stash);
-	free(buffer);
 	return (line);
 }
